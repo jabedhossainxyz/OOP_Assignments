@@ -1,4 +1,4 @@
-package com.npc;
+    package com.npc;
 
 public class SadState implements State {
     @Override
