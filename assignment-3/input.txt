@@ -1,0 +1,10 @@
+# Sample Document
+## Introduction
+This is a sample text file with markdown content.
+## Features
+It demonstrates:
+1. Headings
+2. Paragraphs
+3. File conversion
+
+This text will be converted to other formats.

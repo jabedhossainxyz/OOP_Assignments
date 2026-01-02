@@ -21,7 +21,6 @@ public class MarkdownParser {
             line = line.trim();
             
             if (line.isEmpty()) {
-                // Empty line, finish current paragraph if any
                 if (currentParagraph.length() > 0) {
                     builder.addParagraph(currentParagraph.toString().trim());
                     currentParagraph.setLength(0);
@@ -30,7 +29,6 @@ public class MarkdownParser {
             }
             
             if (line.startsWith("# ")) {
-                // First level heading
                 if (!titleSet) {
                     String title = line.substring(2).trim();
                     builder.setTitle(title);
@@ -38,22 +36,18 @@ public class MarkdownParser {
                 }
                 builder.addHeading1(line.substring(2).trim());
                 
-                // Finish any pending paragraph
                 if (currentParagraph.length() > 0) {
                     builder.addParagraph(currentParagraph.toString().trim());
                     currentParagraph.setLength(0);
                 }
             } else if (line.startsWith("## ")) {
-                // Second level heading
                 builder.addHeading2(line.substring(3).trim());
                 
-                // Finish any pending paragraph
                 if (currentParagraph.length() > 0) {
                     builder.addParagraph(currentParagraph.toString().trim());
                     currentParagraph.setLength(0);
                 }
             } else {
-                // Regular text - part of a paragraph
                 if (currentParagraph.length() > 0) {
                     currentParagraph.append(" ");
                 }
@@ -61,7 +55,6 @@ public class MarkdownParser {
             }
         }
         
-        // Add the last paragraph if exists
         if (currentParagraph.length() > 0) {
             builder.addParagraph(currentParagraph.toString().trim());
         }
