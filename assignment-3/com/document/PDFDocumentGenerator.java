@@ -31,21 +31,18 @@ public class PDFDocumentGenerator {
 
         xrefOffsets.add(0);
 
-        // 1 0 obj: Catalog
         xrefOffsets.add(pdf.size());
         writeAscii(pdf,
                 "1 0 obj\n" +
                 "<< /Type /Catalog /Pages 2 0 R >>\n" +
                 "endobj\n");
 
-        // 2 0 obj: Pages
         xrefOffsets.add(pdf.size());
         writeAscii(pdf,
                 "2 0 obj\n" +
                 "<< /Type /Pages /Kids [3 0 R] /Count 1 >>\n" +
                 "endobj\n");
 
-        // 3 0 obj: Page
         xrefOffsets.add(pdf.size());
         writeAscii(pdf,
                 "3 0 obj\n" +
@@ -54,14 +51,12 @@ public class PDFDocumentGenerator {
                 "/Contents 5 0 R >>\n" +
                 "endobj\n");
 
-        // 4 0 obj: Font
         xrefOffsets.add(pdf.size());
         writeAscii(pdf,
                 "4 0 obj\n" +
                 "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\n" +
                 "endobj\n");
 
-        // 5 0 obj: Contents stream
         xrefOffsets.add(pdf.size());
         writeAscii(pdf, "5 0 obj\n");
         writeAscii(pdf, "<< /Length " + contentStream.length + " >>\n");
