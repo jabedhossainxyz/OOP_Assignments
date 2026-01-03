@@ -1,5 +1,6 @@
 package com.document;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -122,10 +123,34 @@ public class DocumentGenerator {
             }
 
             System.out.println("\nSuccess: File saved successfully!");
-            System.out.println("Directory: " + new File(outputPath).getAbsolutePath());
+            File outputFile = new File(outputPath).getAbsoluteFile();
+            System.out.println("Directory: " + outputFile.getAbsolutePath());
+            openFileIfPossible(outputFile);
 
         } catch (IOException e) {
             System.err.println("Error processing file: " + e.getMessage());
+        }
+    }
+
+    private static void openFileIfPossible(File file) {
+        try {
+            if (!file.exists()) {
+                System.out.println("Note: Output file not found to open: " + file.getAbsolutePath());
+                return;
+            }
+            if (!Desktop.isDesktopSupported()) {
+                System.out.println("Note: Auto-open is not supported on this system.");
+                return;
+            }
+            Desktop desktop = Desktop.getDesktop();
+            if (!desktop.isSupported(Desktop.Action.OPEN)) {
+                System.out.println("Note: Auto-open is not supported on this system.");
+                return;
+            }
+            desktop.open(file);
+        } catch (Exception e) {
+            System.out.println("Note: Could not auto-open file. Please open manually: " + file.getAbsolutePath());
+            System.out.println("Reason: " + e.getMessage());
         }
     }
 }
