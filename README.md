@@ -185,24 +185,7 @@ Another paragraph with more content.
 - Batch processing of multiple files
 - Configuration files for custom settings
 
-### General
-- Unit tests for all components
-- Maven/Gradle build configuration
-- Continuous integration setup
-- Extended documentation and examples
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
 
 ## License
 
 This project is for educational purposes as part of OOP coursework.
-
-## Contact
-
-For questions or issues related to these assignments, please refer to the course documentation or contact the instructor.
