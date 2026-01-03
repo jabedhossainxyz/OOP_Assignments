@@ -184,8 +184,3 @@ Another paragraph with more content.
 - More PDF formatting options (fonts, colors, layouts)
 - Batch processing of multiple files
 - Configuration files for custom settings
-
-
-## License
-
-This project is for educational purposes as part of OOP coursework.
